@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <style>
+    body {
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 2rem;
+      font-family: sans-serif;
+    }
+    .circle {
+      width: 50px;
+      height: 50px;
+      background: #6366f1;
+      border-radius: 50%;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+    }
+    #test-area {
+      width: 400px;
+      height: 400px;
+      border: 2px solid #334155;
+      position: relative;
+      margin: 2rem 0;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Animation Test</h1>
+  <p>Testing if anime.js is working correctly...</p>
+  
+  <div id="test-area">
+    <div class="circle" id="circle1"></div>
+    <div class="circle" id="circle2" style="left: 200px; background: #8b5cf6;"></div>
+    <div class="circle" id="circle3" style="left: 300px; background: #ec4899;"></div>
+  </div>
+  
+  <button onclick="testBounce()">Test Bounce</button>
+  <button onclick="testRotate()">Test Rotate</button>
+  <button onclick="testPulse()">Test Pulse</button>
+  
+  <div id="status" style="margin-top: 1rem; padding: 1rem; background: #1e293b; border-radius: 8px;">
+    <p>Status: <span id="status-text">Ready</span></p>
+    <p>anime.js loaded: <span id="anime-status">Checking...</span></p>
+  </div>
+  
+  <script>
+    // Check if anime.js is loaded
+    window.addEventListener('load', () => {
+      const statusEl = document.getElementById('anime-status');
+      if (typeof anime !== 'undefined') {
+        statusEl.textContent = '✅ Yes';
+        statusEl.style.color = '#10b981';
+        console.log('anime.js version:', anime.version || 'unknown');
+      } else {
+        statusEl.textContent = '❌ No';
+        statusEl.style.color = '#ef4444';
+      }
+    });
+    
+    function testBounce() {
+      const status = document.getElementById('status-text');
+      status.textContent = 'Running bounce test...';
+      
+      if (typeof anime === 'undefined') {
+        status.textContent = '❌ anime.js not loaded!';
+        return;
+      }
+      
+      anime({
+        targets: '.circle',
+        translateY: [0, -100, 0],
+        duration: 1500,
+        delay: anime.stagger(100),
+        easing: 'easeOutElastic(1, .6)',
+        loop: true,
+        complete: () => {
+          status.textContent = '✅ Bounce test complete';
+        }
+      });
+    }
+    
+    function testRotate() {
+      const status = document.getElementById('status-text');
+      status.textContent = 'Running rotate test...';
+      
+      if (typeof anime === 'undefined') {
+        status.textContent = '❌ anime.js not loaded!';
+        return;
+      }
+      
+      anime({
+        targets: '.circle',
+        rotate: '360deg',
+        scale: [1, 1.5, 1],
+        duration: 2000,
+        delay: anime.stagger(150),
+        easing: 'easeInOutQuad',
+        loop: true,
+        complete: () => {
+          status.textContent = '✅ Rotate test complete';
+        }
+      });
+    }
+    
+    function testPulse() {
+      const status = document.getElementById('status-text');
+      status.textContent = 'Running pulse test...';
+      
+      if (typeof anime === 'undefined') {
+        status.textContent = '❌ anime.js not loaded!';
+        return;
+      }
+      
+      anime({
+        targets: '.circle',
+        scale: [1, 1.5, 1],
+        opacity: [0.5, 1, 0.5],
+        duration: 1500,
+        delay: anime.stagger(50),
+        easing: 'easeInOutQuad',
+        loop: true,
+        complete: () => {
+          status.textContent = '✅ Pulse test complete';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+

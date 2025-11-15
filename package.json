@@ -1,0 +1,28 @@
+{
+  "name": "mystery-circle",
+  "version": "1.0.0",
+  "description": "Unlock the secrets of circle animations - A specialized tool for creating beautiful circle-based animations",
+  "main": "public/circle-generator.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server -p 8000 -c-1",
+    "dev": "npx http-server -p 8000 -c-1 -o"
+  },
+  "keywords": [
+    "animation",
+    "circles",
+    "animejs",
+    "web-animation",
+    "visual-effects",
+    "geometric-animations"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
+

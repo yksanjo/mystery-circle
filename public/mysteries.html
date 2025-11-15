@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematical Mysteries of Circles - Mystery Circle</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mysteries.css">
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4.2.2/lib/anime.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌀 Mathematical Mysteries of Circles</h1>
+      <p class="subtitle">Exploring the unsolved problems and deep questions about circles and π</p>
+      <nav>
+        <a href="index.html">← Back to Circle Generator</a>
+      </nav>
+    </header>
+
+    <div class="mysteries-grid">
+      <!-- Mystery 1: π Normal Distribution -->
+      <div class="mystery-card" data-mystery="pi-normal">
+        <div class="mystery-header">
+          <h2>1. Is π "Normal"?</h2>
+          <span class="difficulty beginner">Beginner</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> A number is normal if every possible string of digits occurs with equal frequency in its infinite decimal expansion.</p>
+          <p>We do not know whether π is normal in base 10, base 2, or in any integer base. This is shocking because π looks random, but nobody has been able to prove it.</p>
+          <div class="visualization" id="pi-normal-viz">
+            <canvas id="pi-digits-canvas"></canvas>
+            <p class="viz-label">First 1000 digits of π visualized</p>
+          </div>
+          <button class="explore-btn" onclick="explorePiNormal()">Explore π Digits</button>
+        </div>
+      </div>
+
+      <!-- Mystery 2: π + e Combinations -->
+      <div class="mystery-card" data-mystery="pi-e">
+        <div class="mystery-header">
+          <h2>2. The Nature of π + e</h2>
+          <span class="difficulty intermediate">Intermediate</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> We know π and e are both transcendental, but combinations like π + e, π − e, π × e, π/e, π^e are largely mysteries.</p>
+          <p>We cannot prove whether most of them are rational, irrational, or transcendental.</p>
+          <div class="visualization" id="pi-e-viz">
+            <div class="expression-list">
+              <div class="expression">π + e ≈ <span id="pi-plus-e">5.85987...</span></div>
+              <div class="expression">π − e ≈ <span id="pi-minus-e">0.42331...</span></div>
+              <div class="expression">π × e ≈ <span id="pi-times-e">8.53973...</span></div>
+              <div class="expression">π / e ≈ <span id="pi-div-e">1.15572...</span></div>
+            </div>
+            <p class="mystery-note">❓ Unknown: Rational, Irrational, or Transcendental?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 3: Circle Packing -->
+      <div class="mystery-card" data-mystery="packing">
+        <div class="mystery-header">
+          <h2>3. Circle Packing Problems</h2>
+          <span class="difficulty intermediate">Intermediate</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> Optimal packing of circles in various shapes remains largely unsolved.</p>
+          <ul>
+            <li>Packing equal circles on a sphere (Tammes problem) → Many cases unknown</li>
+            <li>Packing congruent circles in a square → Some small cases solved; general formula unknown</li>
+            <li>Packing in 3D shapes or hyperbolic surfaces → Largely unsolved</li>
+          </ul>
+          <div class="visualization" id="packing-viz">
+            <canvas id="packing-canvas"></canvas>
+            <div class="packing-controls">
+              <label>Number of circles: <input type="number" id="packing-count" value="7" min="1" max="20"></label>
+              <button onclick="visualizePacking()">Generate Packing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 4: Kissing Number -->
+      <div class="mystery-card" data-mystery="kissing">
+        <div class="mystery-header">
+          <h2>4. Kissing Number Problem</h2>
+          <span class="difficulty advanced">Advanced</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> In 2D, you can touch a circle with 6 identical surrounding circles. In higher dimensions, the maximal kissing number is known only for a few cases.</p>
+          <div class="visualization" id="kissing-viz">
+            <canvas id="kissing-canvas"></canvas>
+            <div class="kissing-info">
+              <p>2D: 6 circles (proven)</p>
+              <p>3D: 12 spheres (proven)</p>
+              <p>4D: 24 hyperspheres (proven)</p>
+              <p>5D+: ❓ Unknown for many dimensions</p>
+            </div>
+            <button onclick="visualizeKissing()">Visualize 2D Kissing</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 5: Buffon's Needle -->
+      <div class="mystery-card" data-mystery="buffon">
+        <div class="mystery-header">
+          <h2>5. Buffon's Needle Mystery</h2>
+          <span class="difficulty beginner">Beginner</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> Buffon's needle experiment gives a probability involving π when you drop a needle on lined paper. But why does such a simple physical experiment encode π?</p>
+          <div class="visualization" id="buffon-viz">
+            <canvas id="buffon-canvas"></canvas>
+            <div class="buffon-stats">
+              <p>Drops: <span id="buffon-drops">0</span></p>
+              <p>Crossings: <span id="buffon-crossings">0</span></p>
+              <p>Estimated π: <span id="buffon-pi">-</span></p>
+            </div>
+            <button onclick="startBuffon()">Start Experiment</button>
+            <button onclick="stopBuffon()">Stop</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 6: Chord Length Distribution -->
+      <div class="mystery-card" data-mystery="chord">
+        <div class="mystery-header">
+          <h2>6. Chord Length Distribution</h2>
+          <span class="difficulty intermediate">Intermediate</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> Pick 2 random points on a circle — what is the exact distribution of chord lengths? This ties into the Bertrand Paradox, which is still philosophically and mathematically open.</p>
+          <div class="visualization" id="chord-viz">
+            <canvas id="chord-canvas"></canvas>
+            <div class="chord-controls">
+              <label>Method: 
+                <select id="chord-method">
+                  <option value="random-points">Random Points</option>
+                  <option value="random-chord">Random Chord</option>
+                  <option value="random-midpoint">Random Midpoint</option>
+                </select>
+              </label>
+              <button onclick="visualizeChords()">Generate Chords</button>
+            </div>
+            <p class="paradox-note">⚠️ Different "random" definitions give different distributions!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 7: π Computation Complexity -->
+      <div class="mystery-card" data-mystery="computation">
+        <div class="mystery-header">
+          <h2>7. π Computation Complexity</h2>
+          <span class="difficulty advanced">Advanced</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> Even though we can compute π to trillions of digits, we still don't know:</p>
+          <ul>
+            <li>Is there a "fastest possible" algorithm for π?</li>
+            <li>Is π computation fundamentally as hard as multiplication?</li>
+            <li>Are there undiscovered formula families?</li>
+          </ul>
+          <div class="visualization" id="computation-viz">
+            <div class="algorithm-timeline">
+              <div class="algorithm">Archimedes (250 BC): 2 digits</div>
+              <div class="algorithm">Madhava (1400): 11 digits</div>
+              <div class="algorithm">Machin (1706): 100 digits</div>
+              <div class="algorithm">Chudnovsky (1989): Billions of digits</div>
+              <div class="algorithm">Current (2024): Trillions of digits</div>
+            </div>
+            <p class="mystery-note">❓ What's the theoretical limit?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mystery 8: Perfect Circle Problem -->
+      <div class="mystery-card" data-mystery="perfect">
+        <div class="mystery-header">
+          <h2>8. Perfect Circle Reconstruction</h2>
+          <span class="difficulty intermediate">Intermediate</span>
+        </div>
+        <div class="mystery-content">
+          <p><strong>Problem:</strong> How much information (arcs or curvature samples) uniquely determines a perfect circle? In noisy or discrete geometry, how many points are needed?</p>
+          <div class="visualization" id="perfect-viz">
+            <canvas id="perfect-canvas"></canvas>
+            <div class="perfect-controls">
+              <label>Points: <input type="number" id="perfect-points" value="3" min="3" max="20"></label>
+              <button onclick="reconstructCircle()">Reconstruct Circle</button>
+            </div>
+            <p class="mystery-note">❓ Minimum points needed with noise?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Explore these mysteries and contribute to mathematical understanding!</p>
+      <p><a href="index.html">← Back to Circle Generator</a></p>
+    </footer>
+  </div>
+
+  <script src="mysteries.js"></script>
+</body>
+</html>
+
