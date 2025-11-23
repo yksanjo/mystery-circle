@@ -1,5 +1,9 @@
 # ⭕ Mystery Circle
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://www.javascript.com/) [![GitHub stars](https://img.shields.io/github/stars/yksanjo/mystery-circle?style=social)](https://github.com/yksanjo/mystery-circle/stargazers) [![GitHub forks](https://img.shields.io/github/forks/yksanjo/mystery-circle.svg)](https://github.com/yksanjo/mystery-circle/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/yksanjo/mystery-circle.svg)](https://github.com/yksanjo/mystery-circle/issues) [![Last commit](https://img.shields.io/github/last-commit/yksanjo/mystery-circle.svg)](https://github.com/yksanjo/mystery-circle/commits/main)
+
+
 **Unlock the secrets of circle animations**
 
 Mystery Circle is a specialized tool for creating, experimenting with, and generating beautiful circle-based animations. Extracted and enhanced from the AI Animation Generator, this project focuses exclusively on the art and science of animated circles.
